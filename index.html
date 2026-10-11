@@ -88,6 +88,26 @@
   <script>
     (()=>{
       'use strict';
+      const BUILD_VERSION='2026-10-11-1';
+      const BUILD_KEY='parthlabs-build-version';
+      const CACHE_BUST_KEY='parthlabs-cache-busted-version';
+      const url=new URL(window.location.href);
+      try{
+        const savedBuild=localStorage.getItem(BUILD_KEY);
+        if(savedBuild!==BUILD_VERSION){
+          localStorage.setItem(BUILD_KEY,BUILD_VERSION);
+          if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(regs=>Promise.all(regs.map(r=>r.unregister()))).catch(()=>{});}
+          if('caches' in window){caches.keys().then(keys=>Promise.all(keys.map(key=>caches.delete(key)))).catch(()=>{});}
+        }
+        const hasVersion=url.searchParams.get('v')===BUILD_VERSION;
+        const bustedForThisBuild=localStorage.getItem(CACHE_BUST_KEY)===BUILD_VERSION;
+        if(!hasVersion && !bustedForThisBuild){
+          localStorage.setItem(CACHE_BUST_KEY,BUILD_VERSION);
+          url.searchParams.set('v',BUILD_VERSION);
+          window.location.replace(url.toString());
+          return;
+        }
+      }catch(e){}
       const USER='parth6001';
       const known=new Set(['test-army-qa','MindOrbit','Auralis','wallpaper-studio','MyReminder','parth6001.github.io']);
       const $=s=>document.querySelector(s);
