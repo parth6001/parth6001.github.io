@@ -2,14 +2,14 @@
 
 Files:
 - index.html: complete single-file responsive website. Replace the **root** `index.html` in the `parth6001/parth6001.github.io` repository with it.
-- CNAME: current custom-domain setting (`parthlabs.tech`). Keep it **only if you actually own this domain and DNS points to GitHub Pages**.
+- CNAME: optional custom-domain setting. Keep it **only if you actually own the domain and DNS points to GitHub Pages**.
 
 ## Update the existing GitHub Pages website
 1. Open https://github.com/parth6001/parth6001.github.io
 2. On main branch open index.html > Edit (pencil) OR use Add file > Upload files; replace existing root index.html.
 3. Commit changes to main. Do not rename the file and do not upload it to a new folder.
 4. In Settings > Pages confirm build source: Deploy from a branch, branch main, /(root), then check Actions or the deployment status.
-5. Because a CNAME file containing parthlabs.tech is already in the repository, GitHub Pages may redirect parth6001.github.io to parthlabs.tech. Verify the domain is registered and that the correct GitHub Pages DNS records are configured. If you do not own/operate the custom domain yet, remove CNAME and clear the custom domain in Settings > Pages to restore parth6001.github.io.
+5. If a CNAME file is present, GitHub Pages may redirect parth6001.github.io to that custom domain. Verify the domain is registered and DNS records are correct. If you do not own/operate the custom domain yet, remove CNAME and clear the custom domain in Settings > Pages to restore parth6001.github.io.
 6. Wait for deployment then hard-refresh. On Android Chrome open a new incognito tab or remove just the site's cached files if needed. Avoid clearing storage for unrelated apps.
 
 ## Notes
